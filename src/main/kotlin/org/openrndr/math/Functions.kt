@@ -10,16 +10,12 @@ fun mod(a: Int, b: Int) = ((a % b) + b) % b
 fun mod(a: Float, b: Float) = ((a % b) + b) % b
 fun mod(a: Long, b: Long) = ((a % b) + b) % b
 
-@JvmName("modDouble")
 fun Double.mod_(b: Double) = mod(this, b)
 
-@JvmName("modInt")
 fun Int.mod_(b: Int) = mod(this, b)
 
-@JvmName("modFloat")
 fun Float.mod_(b: Float) = mod(this, b)
 
-@JvmName("modLong")
 fun Long.mod_(b: Long) = mod(this, b)
 
 fun Vector2.mod(b: Vector2) =
@@ -55,10 +51,8 @@ fun IntVector4.mod(b: IntVector4) =
 fun clamp(value: Double, min: Double, max: Double) = max(min, min(max, value))
 fun clamp(value: Int, min: Int, max: Int) = max(min, min(max, value))
 
-@JvmName("doubleClamp")
 fun Double.clamp(min: Double, max: Double) = clamp(this, min, max)
 
-@JvmName("intClamp")
 fun Int.clamp(min: Int, max: Int) = clamp(this, min, max)
 
 fun Vector2.clamp(min : Vector2, max : Vector2) =

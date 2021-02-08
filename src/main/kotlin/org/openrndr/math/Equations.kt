@@ -2,7 +2,7 @@ package org.openrndr.math
 
 private const val DISCRIMINANT_EPSILON = 1e-10
 private const val SOLUTION_EPSILON = 1e-8
-private val MACHINE_EPSILON = Math.ulp(1.0)
+//private val MACHINE_EPSILON = math.ulp(1.0)
 private const val EPSILON = 1e-14
 
 // adapted from https://github.com/paperjs/paper.js/blob/develop/src/util/Numerical.js
@@ -13,9 +13,7 @@ private fun trim(acc: DoubleArray, len: Int): DoubleArray {
     } else if (len == 0) {
         DoubleArray(0)
     } else {
-        val result = DoubleArray(len)
-        System.arraycopy(acc, 0, result, 0, len)
-        result
+        acc.copyOf(len)
     }
 }
 
@@ -57,6 +55,7 @@ fun solveLinear(a: Double, b: Double): DoubleArray {
     return trim(acc, solveLinear(a, b, acc))
 }
 
+/*
 fun solveQuadratic(a: Double, b: Double, c: Double, acc: DoubleArray): Int {
     var a = a
     var b = b
@@ -100,7 +99,9 @@ fun solveQuadratic(a: Double, b: Double, c: Double): DoubleArray {
     val acc = DoubleArray(2)
     return trim(acc, solveQuadratic(a, b, c, acc))
 }
+*/
 
+/*
 fun solveCubic(a: Double, b: Double, c: Double, d: Double, acc: DoubleArray): Int {
     var a = a
     var b = b
@@ -166,3 +167,4 @@ fun solveCubic(a: Double, b: Double, c: Double, d: Double): DoubleArray {
     val acc = DoubleArray(3)
     return trim(acc, solveCubic(a, b, c, d, acc))
 }
+*/

@@ -1,15 +1,17 @@
 package org.openrndr.math
 
-import java.io.Serializable
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 
 /**
  * A 4x4 matrix with double precision
  */
+@Serializable
 data class Matrix44(
         val c0r0: Double = 0.0, val c1r0: Double = 0.0, val c2r0: Double = 0.0, val c3r0: Double = 0.0,
         val c0r1: Double = 0.0, val c1r1: Double = 0.0, val c2r1: Double = 0.0, val c3r1: Double = 0.0,
         val c0r2: Double = 0.0, val c1r2: Double = 0.0, val c2r2: Double = 0.0, val c3r2: Double = 0.0,
-        val c0r3: Double = 0.0, val c1r3: Double = 0.0, val c2r3: Double = 0.0, val c3r3: Double = 0.0) : Serializable, LinearType<Matrix44> {
+        val c0r3: Double = 0.0, val c1r3: Double = 0.0, val c2r3: Double = 0.0, val c3r3: Double = 0.0) : LinearType<Matrix44> {
 
     companion object {
         /**
@@ -142,6 +144,7 @@ data class Matrix44(
     /**
      * Returns a transposed version of the matrix
      */
+    @Transient
     val transposed
         get() = Matrix44(
                 c0r0, c0r1, c0r2, c0r3,
@@ -152,6 +155,7 @@ data class Matrix44(
     /**
      * The 3x3 top-left part of the 4x4 matrix
      */
+    @Transient
     val matrix33
         get() = Matrix33(c0r0, c1r0, c2r0,
                 c0r1, c1r1, c2r1,

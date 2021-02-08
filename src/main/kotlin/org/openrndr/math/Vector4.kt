@@ -1,6 +1,6 @@
 package org.openrndr.math
 
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
@@ -8,7 +8,8 @@ import kotlin.math.sqrt
 /**
  * Double precision vector 4
  */
-data class Vector4(val x: Double, val y: Double, val z: Double, val w: Double) : Serializable, LinearType<Vector4> {
+@Serializable
+data class Vector4(val x: Double, val y: Double, val z: Double, val w: Double) : LinearType<Vector4> {
     constructor(x: Double) : this(x, x, x, x)
 
     val xy: Vector2 get() = Vector2(x, y)

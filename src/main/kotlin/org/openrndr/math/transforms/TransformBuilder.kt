@@ -63,7 +63,6 @@ fun buildTransform(baseTransform: Matrix44 = Matrix44.IDENTITY, builder: Transfo
 /**
  * Matrix44 transform helper
  */
-@JvmName("matrix44Transform")
 fun Matrix44.transform(builder: TransformBuilder.() -> Unit) : Matrix44 {
     return buildTransform(baseTransform = this, builder = builder)
 }

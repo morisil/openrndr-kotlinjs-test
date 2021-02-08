@@ -1,12 +1,13 @@
 package org.openrndr.math
 
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 import kotlin.math.*
 
 /**
  * Double precision vector 3
  */
-data class Vector3(val x: Double, val y: Double, val z: Double) : Serializable, LinearType<Vector3> {
+@Serializable
+data class Vector3(val x: Double, val y: Double, val z: Double) : LinearType<Vector3> {
     constructor(x: Double) : this(x, x, x)
 
     companion object {

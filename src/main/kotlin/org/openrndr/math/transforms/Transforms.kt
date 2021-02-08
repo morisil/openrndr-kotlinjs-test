@@ -4,6 +4,7 @@ import org.openrndr.math.Matrix44
 import org.openrndr.math.Vector3
 import org.openrndr.math.Vector4
 
+import org.openrndr.math.Math
 /**
  *  Creates an perspective projection matrix
  *
@@ -337,7 +338,8 @@ fun unproject(point: Vector3, projection: Matrix44, view: Matrix44, width: Int, 
 /**
  * Construct a normal matrix from the give view matrix
  */
-fun normalMatrix(view: Matrix44): Matrix44 {
+
+/*fun normalMatrix(view: Matrix44): Matrix44 {
 
     val subView = Matrix44(
             view.c0r0, view.c1r0, view.c2r0, 0.0,
@@ -346,5 +348,5 @@ fun normalMatrix(view: Matrix44): Matrix44 {
             0.0, 0.0, 0.0, 1.0)
 
     return subView.inversed.transposed.copy(c3r3 = 0.0)
-}
+}*/
 

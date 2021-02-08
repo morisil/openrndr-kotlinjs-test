@@ -1,6 +1,6 @@
 package org.openrndr.math
 
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 import kotlin.math.acos
 import kotlin.math.cos
 import kotlin.math.sin
@@ -10,7 +10,8 @@ import kotlin.math.sqrt
  * Quaternion class for representing orientations in 3D space
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-data class Quaternion(val x: Double, val y: Double, val z: Double, val w: Double) : Serializable {
+@Serializable
+data class Quaternion(val x: Double, val y: Double, val z: Double, val w: Double) {
 
     companion object {
         val IDENTITY: Quaternion = Quaternion(0.0, 0.0, 0.0, 1.0)

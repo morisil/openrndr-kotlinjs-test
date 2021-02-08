@@ -1,7 +1,7 @@
 package org.openrndr.math
 
-import java.io.Serializable
-import java.lang.Math.toRadians
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlin.math.*
 
 enum class YPolarity {
@@ -12,7 +12,8 @@ enum class YPolarity {
 /**
  * Double precision vector 2
  */
-data class Vector2(val x: Double, val y: Double) : Serializable, LinearType<Vector2> {
+@Serializable
+data class Vector2(val x: Double, val y: Double) : LinearType<Vector2> {
 
     constructor(x: Double) : this(x, x)
 
@@ -69,7 +70,7 @@ data class Vector2(val x: Double, val y: Double) : Serializable, LinearType<Vect
      */
     fun rotate(degrees: Double, origin: Vector2 = ZERO): Vector2 {
         val p = this - origin
-        val a = toRadians(degrees)
+        val a = Math.toRadians(degrees)
 
         val w = Vector2(
                 p.x * cos(a) - p.y * sin(a),
@@ -79,12 +80,19 @@ data class Vector2(val x: Double, val y: Double) : Serializable, LinearType<Vect
         return w + origin
     }
 
+    @Transient
     val yx get() = Vector2(y, x)
+    @Transient
     val xx get() = Vector2(x, x)
+    @Transient
     val yy get() = Vector2(y, y)
+    @Transient
     val xy0 get() = Vector3(x, y, 0.0)
+    @Transient
     val xy1 get() = Vector3(x, y, 1.0)
+    @Transient
     val xy00 get() = Vector4(x, y, 0.0, 0.0)
+    @Transient
     val xy01 get() = Vector4(x, y, 0.0, 1.0)
 
     /**
@@ -163,7 +171,7 @@ data class Vector2(val x: Double, val y: Double) : Serializable, LinearType<Vect
         val INFINITY = Vector2(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY)
 
         fun fromPolar(polar: Polar): Vector2 {
-            val theta = toRadians(polar.theta)
+            val theta = Math.toRadians(polar.theta)
             val x = cos(theta)
             val y = sin(theta)
             return Vector2(x, y) * polar.radius
