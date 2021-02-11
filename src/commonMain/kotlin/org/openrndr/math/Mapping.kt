@@ -2,6 +2,7 @@
 
 package org.openrndr.math
 
+import kotlin.jvm.JvmName
 import kotlin.math.max
 import kotlin.math.min
 
@@ -41,6 +42,7 @@ fun map(beforeLeft: Double, beforeRight: Double,
  * @param clamp constrain the result to [afterLeft, afterRight]
  * @return a value in the after domain
  */
+@JvmName("doubleMap")
 fun Double.map(beforeLeft: Double, beforeRight: Double,
                afterLeft: Double, afterRight: Double,
                clamp: Boolean = false): Double {
@@ -93,6 +95,7 @@ fun smoothstep(edge0: Double, edge1: Double, x: Double): Double {
     return u * u * (3 - 2 * u)
 }
 
+@JvmName("doubleSmoothstep")
 fun Double.smoothstep(edge0: Double, edge1: Double) = smoothstep(edge0, edge1, this)
 
 fun Vector2.smoothstep(edge0: Vector2, edge1: Vector2): Vector2 =
@@ -146,6 +149,7 @@ fun smootherstep(edge0: Double, edge1: Double, x: Double): Double {
 
 fun saturate(x: Double) = max(0.0, min(1.0, x))
 
+@JvmName("doubleSaturate")
 fun Double.saturate() = saturate(this)
 
 fun Vector2.saturate() = Vector2(x.saturate(), y.saturate())

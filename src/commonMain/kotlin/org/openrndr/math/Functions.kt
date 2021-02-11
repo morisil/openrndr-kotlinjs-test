@@ -2,6 +2,7 @@
 
 package org.openrndr.math
 
+import kotlin.jvm.JvmName
 import kotlin.math.max
 import kotlin.math.min
 
@@ -51,8 +52,10 @@ fun IntVector4.mod(b: IntVector4) =
 fun clamp(value: Double, min: Double, max: Double) = max(min, min(max, value))
 fun clamp(value: Int, min: Int, max: Int) = max(min, min(max, value))
 
+@JvmName("doubleClamp")
 fun Double.clamp(min: Double, max: Double) = clamp(this, min, max)
 
+@JvmName("intClamp")
 fun Int.clamp(min: Int, max: Int) = clamp(this, min, max)
 
 fun Vector2.clamp(min : Vector2, max : Vector2) =

@@ -4,6 +4,7 @@ import org.openrndr.math.Matrix44
 import org.openrndr.math.Quaternion
 import org.openrndr.math.Vector2
 import org.openrndr.math.Vector3
+import kotlin.jvm.JvmName
 import kotlin.reflect.KMutableProperty0
 
 class TransformBuilder(baseTransform: Matrix44 = Matrix44.IDENTITY) {
@@ -63,6 +64,7 @@ fun buildTransform(baseTransform: Matrix44 = Matrix44.IDENTITY, builder: Transfo
 /**
  * Matrix44 transform helper
  */
+@JvmName("matrix44Transform")
 fun Matrix44.transform(builder: TransformBuilder.() -> Unit) : Matrix44 {
     return buildTransform(baseTransform = this, builder = builder)
 }
