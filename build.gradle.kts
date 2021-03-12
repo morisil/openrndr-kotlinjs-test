@@ -1,13 +1,22 @@
+val kotlinVersion = "1.4.31"
+val spekVersion = "2.0.0-alpha.2"
+val kluentVersion = "1.64"
+
 plugins {
-    kotlin("multiplatform") version "1.4.30"
+    kotlin("multiplatform") version "1.4.31"
+    `maven-publish`
 }
 
 group = "org.openrndr"
 version = "1.0"
 
 repositories {
-    mavenCentral()
+    jcenter()
+    maven {
+        url = uri("https://dl.bintray.com/spekframework/spek-dev/")
+    }
 }
+
 
 kotlin {
     jvm {
@@ -17,6 +26,7 @@ kotlin {
         testRuns["test"].executionTask.configure {
             useJUnit()
         }
+
     }
     js(IR) {
         browser {
@@ -37,17 +47,19 @@ kotlin {
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
-    
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0-RC")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation("org.spekframework.spek2:spek-dsl-jvm:$spekVersion")
+                runtimeOnly("org.spekframework.spek2:spek-runner-junit5:$spekVersion")
+                implementation("org.amshove.kluent:kluent-common:$kluentVersion")
             }
         }
         val jvmMain by getting
